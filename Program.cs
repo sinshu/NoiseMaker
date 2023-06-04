@@ -9,7 +9,7 @@ static class Program
     private static readonly string[] paths = new string[]
     {
         "lightrain.wav",
-        "heavyrain.wav",
+        "windstorm.wav",
         "waterfall.wav"
     };
 
