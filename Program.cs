@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using NAudio.Wave;
@@ -9,6 +8,7 @@ static class Program
     private static readonly string[] paths = new string[]
     {
         "lightrain.wav",
+        "heavyrain.wav",
         "windstorm.wav",
         "waterfall.wav"
     };
@@ -27,28 +27,36 @@ static class Program
             {
                 switch (Console.ReadKey().Key)
                 {
-                    case ConsoleKey.Q:
+                    case ConsoleKey.D1:
                         ambientSound.Voices[0].Volume -= 5;
                         break;
 
-                    case ConsoleKey.W:
+                    case ConsoleKey.D2:
                         ambientSound.Voices[0].Volume += 5;
                         break;
 
-                    case ConsoleKey.A:
+                    case ConsoleKey.Q:
                         ambientSound.Voices[1].Volume -= 5;
                         break;
 
-                    case ConsoleKey.S:
+                    case ConsoleKey.W:
                         ambientSound.Voices[1].Volume += 5;
                         break;
 
-                    case ConsoleKey.Z:
+                    case ConsoleKey.A:
                         ambientSound.Voices[2].Volume -= 5;
                         break;
 
-                    case ConsoleKey.X:
+                    case ConsoleKey.S:
                         ambientSound.Voices[2].Volume += 5;
+                        break;
+
+                    case ConsoleKey.Z:
+                        ambientSound.Voices[3].Volume -= 5;
+                        break;
+
+                    case ConsoleKey.X:
+                        ambientSound.Voices[3].Volume += 5;
                         break;
 
                     case ConsoleKey.Escape:
@@ -114,11 +122,16 @@ class Voice
         name = Path.GetFileNameWithoutExtension(path);
         data = ReadData(path);
         position = 0;
-        volume = 30;
+        volume = 0;
     }
 
     public void Process(float[] buffer, int offset, int count)
     {
+        if (volume == 0)
+        {
+            return;
+        }
+
         var a = 0.01F * volume;
         for (var t = 0; t < count; t++)
         {
