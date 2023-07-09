@@ -10,7 +10,8 @@ static class Program
         "people_hi.wav",
         "people_lo.wav",
         "windstorm.wav",
-        "waterfall.wav"
+        "waterfall.wav",
+        "mostheavy.wav"
     };
 
     static void Main(string[] args)
@@ -27,36 +28,44 @@ static class Program
             {
                 switch (Console.ReadKey().Key)
                 {
-                    case ConsoleKey.D1:
+                    case ConsoleKey.D3:
                         ambientSound.Voices[0].Volume -= 5;
                         break;
 
-                    case ConsoleKey.D2:
+                    case ConsoleKey.D4:
                         ambientSound.Voices[0].Volume += 5;
                         break;
 
-                    case ConsoleKey.Q:
+                    case ConsoleKey.D1:
                         ambientSound.Voices[1].Volume -= 5;
                         break;
 
-                    case ConsoleKey.W:
+                    case ConsoleKey.D2:
                         ambientSound.Voices[1].Volume += 5;
                         break;
 
-                    case ConsoleKey.A:
+                    case ConsoleKey.Q:
                         ambientSound.Voices[2].Volume -= 5;
                         break;
 
-                    case ConsoleKey.S:
+                    case ConsoleKey.W:
                         ambientSound.Voices[2].Volume += 5;
                         break;
 
-                    case ConsoleKey.Z:
+                    case ConsoleKey.A:
                         ambientSound.Voices[3].Volume -= 5;
                         break;
 
-                    case ConsoleKey.X:
+                    case ConsoleKey.S:
                         ambientSound.Voices[3].Volume += 5;
+                        break;
+
+                    case ConsoleKey.Z:
+                        ambientSound.Voices[4].Volume -= 5;
+                        break;
+
+                    case ConsoleKey.X:
+                        ambientSound.Voices[4].Volume += 5;
                         break;
 
                     case ConsoleKey.Escape:
